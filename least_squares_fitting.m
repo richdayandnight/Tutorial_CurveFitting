@@ -5,7 +5,6 @@
 
 
 # Given year (time in years) and population (million)
-clear all;
 year = [0,10,20,30,40];
 population = [35.80, 47.40, 61.95, 77.99, 93.73];
 
