@@ -103,6 +103,12 @@ y
 printf("D(Lt)x = y  // below is the solved x\n");
 x
 
+printf("\n======================================================================\n");
+complete_year = [0,5,10,15,20,25,30,35,40];
+complete_population = [35.80, 41.29, 47.40, 54.32, 61.95, 69.83, 77.99, 86.27, 93.73];
+printf("3.) Interpolation the population in years(5,15,25,35) using the model VS real value:\n")
+interpolated_values = evalpoly(poly,[5,15,25,35])
+real_value = [complete_population(2:2:end)]
 
 # Get first derivative of polynomial generated
 first_derivative = polyder(poly.');
@@ -111,27 +117,24 @@ first_derivative = polyder(poly.');
 second_derivative = polyder(first_derivative);
 
 printf("\n======================================================================\n");
-printf("\n2.) The following first derivative of the polynomial generated:\n");
+printf("\n4.) The following first derivative of the polynomial generated:\n");
 polyout(first_derivative, 'x');
 
 printf("\n======================================================================\n");
-printf("\n3.) See the second subplot generated in figure 2 for the gradient of the first graph\n");
-subplot(2,1,1)
-hold on;
+printf("\n5.) See the third subplot for the gradient of the first graph\n");
 
+% The following lines are responsible for the plotting of graphs
 # Create list of x coordinates
 linx = linspace(min(year), max(year));
-
-# Evauate the polynomial with the created list of x coordinates
+# Evaluate the polynomial with the created list of x coordinates
 liny = evalpoly(poly, linx(:));
 
-# Plot the Year vs Population graph
+# FIRST GRAPH
+# Plot the Model --Year vs Population graph--
+# AND Plot the given data points
+subplot(3,1,1)
+hold on;
 plot(linx(:), liny(:), "b-");
-
-year = [0,5,10,15,20,25,30,35,40];
-population = [35.80, 41.29, 47.40, 54.32, 61.95, 69.83, 77.99, 86.27, 93.73];
-
-# Plot the given data points
 plot(year(:), population(:), "or");
 title("Year vs Population graph");
 ylabel("Year");
@@ -139,7 +142,20 @@ xlabel("Population");
 legend("population(year)", "Data point");
 hold off;
 
-subplot(2,1,2)
+# SECOND GRAPH
+# Plot the Model --Year vs Population graph--
+# AND Plot the given data points with the extra data points
+subplot(3,1,2)
+hold on;
+plot(linx(:), liny(:), "b-");
+plot(complete_year(:), complete_population(:), "or");
+title("Year vs Population graph (compare the interpolated value to the data points in year(5,15,25,35))");
+ylabel("Year");
+xlabel("Population");
+legend("population(year)", "Data point");
+hold off;
+
+subplot(3,1,3)
 hold on;
 
 # Evaluate the first_derivative with the created list of x coordinates
@@ -148,7 +164,5 @@ liny_first_d = evalpoly(first_derivative, linx(:));
 # Plot the Year vs Population graph
 plot(linx(:), liny_first_d(:), "b-");
 legend("Gradient = population(year)'");
-title("Gradient");
+title("Gradient of the model");
 hold off;
-
-
