@@ -139,9 +139,9 @@ hold on;
 plot(linx(:), liny(:), "b-");
 plot(year(:), population(:), "or");
 title("Year vs Population graph");
-ylabel("Year");
-xlabel("Population");
-legend("population(year)", "Data point");
+ylabel("Population (million)");
+xlabel("Year (relative # of years from 1970)");
+legend("pop(year)", "Data point");
 hold off;
 
 # SECOND GRAPH
@@ -152,9 +152,10 @@ hold on;
 plot(linx(:), liny(:), "b-");
 plot(complete_year(:), complete_population(:), "or");
 title("Year vs Population graph (compare the interpolated value to the data points in year(5,15,25,35))");
-ylabel("Year");
-xlabel("Population");
-legend("population(year)", "Data point");
+ylabel("Population (million)");
+xlabel("Year (relative # of years from 1970)");
+legend("pop(year)", "Data point");
+legend("location", "east");
 hold off;
 
 subplot(3,1,3)
