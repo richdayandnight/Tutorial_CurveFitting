@@ -3,7 +3,6 @@
 
 % Least squares fitting
 
-
 # Given year (time in years) and population (million)
 year = [0,10,20,30,40];
 population = [35.80, 47.40, 61.95, 77.99, 93.73];
@@ -143,7 +142,7 @@ hold off;
 subplot(2,1,2)
 hold on;
 
-# Evauate the first_derivative with the created list of x coordinates
+# Evaluate the first_derivative with the created list of x coordinates
 liny_first_d = evalpoly(first_derivative, linx(:));
 
 # Plot the Year vs Population graph
