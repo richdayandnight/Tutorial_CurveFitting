@@ -91,7 +91,7 @@ b
 # Flip the x polynomial produced to fit the polynomial format
 poly = flip(x);
 printf("\n======================================================================\n");
-printf("\n2.)The following cubic polynomial is interpolates the data points: \n")
+printf("\n2.)The following cubic polynomial interpolates the data points: \n")
 polyout(poly, 'x');
 printf("where:\n    a_0 = %f\n     a_1 = %f\n     a_2 = %f\n     a_3 = %f\n", poly(1), poly(2), poly(3), poly(4));
 printf("SOLUTION: Cholesky LDLt\n");
