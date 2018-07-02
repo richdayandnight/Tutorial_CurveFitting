@@ -9,10 +9,10 @@ clear all;
 year = [0,10,20,30,40];
 population = [35.80, 47.40, 61.95, 77.99, 93.73];
 
-# Initialiyeare matrix A
+# Initialize matrix A
 A = zeros(4,4);
 
-# Initialiyeare year vectors
+# Initialize year vectors
 year_squared = [];
 year_cube = [];
 year_fourth = [];
