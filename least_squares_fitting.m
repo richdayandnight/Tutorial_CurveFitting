@@ -4,53 +4,53 @@
 % Least squares fitting
 
 
-# Given z (time in years) and T (population)
+# Given year (time in years) and population (million)
 clear all;
-z = [0,10,20,30,40];
-T = [35.80, 47.40, 61.95, 77.99, 93.73];
+year = [0,10,20,30,40];
+population = [35.80, 47.40, 61.95, 77.99, 93.73];
 
-# Initialize matrix A
+# Initialiyeare matrix A
 A = zeros(4,4);
 
-# Initialize z vectors
-z_squared = [];
-z_cube = [];
-z_fourth = [];
-z_fifth = [];
-z_sixth = [];
+# Initialiyeare year vectors
+year_squared = [];
+year_cube = [];
+year_fourth = [];
+year_fifth = [];
+year_sixth = [];
 
-# Fill z vectors with the square, cube, ..., sixth power of z
-for i = 1:length(z) 
-  z_squared(i) = z(i)**2;
-  z_cube(i) = z(i)**3;
-  z_fourth(i) = z_squared(i)**2;
-  z_fifth(i) = z_squared(i) * z_cube(i);
-  z_sixth(i) = z_cube(i)**2;
+# Fill year vectors with the square, cube, ..., sixth power of year
+for i = 1:length(year) 
+  year_squared(i) = year(i)**2;
+  year_cube(i) = year(i)**3;
+  year_fourth(i) = year_squared(i)**2;
+  year_fifth(i) = year_squared(i) * year_cube(i);
+  year_sixth(i) = year_cube(i)**2;
 endfor
 
-# Get the sum of the filled vectors above and put it in the z_vector
-z_vector = [];
-z_vector(end+1) = sum(z);
-z_vector(end+1) = sum(z_squared);
-z_vector(end+1) = sum(z_cube); 
-z_vector(end+1) = sum(z_fourth);
-z_vector(end+1) = sum(z_fifth);
-z_vector(end+1) = sum(z_sixth);
+# Get the sum of the filled vectors above and put it in the year_vector
+year_vector = [];
+year_vector(end+1) = sum(year);
+year_vector(end+1) = sum(year_squared);
+year_vector(end+1) = sum(year_cube); 
+year_vector(end+1) = sum(year_fourth);
+year_vector(end+1) = sum(year_fifth);
+year_vector(end+1) = sum(year_sixth);
 
 
-# Build the A matrix using the z_vector (Note: Ax = b)
-A(1,1) = length(z);
-A(1,2:end) = z_vector(1:3);
-A(2,1:end) = z_vector(1:4);
-A(3,1:end) = z_vector(2:5);
-A(4,1:end) = z_vector(3:6);
+# Build the A matrix using the year_vector (Note: Ax = b)
+A(1,1) = length(year);
+A(1,2:end) = year_vector(1:3);
+A(2,1:end) = year_vector(1:4);
+A(3,1:end) = year_vector(2:5);
+A(4,1:end) = year_vector(3:6);
 
 # Build the b matrix 
 b = [];
-b(end+1) = sum(T);
-b(end+1) = sum(z(1:end) .* T(1:end));
-b(end+1) = sum(z_squared(1:end) .* T(1:end));
-b(end+1) = sum(z_cube(1:end) .* T(1:end));
+b(end+1) = sum(population);
+b(end+1) = sum(year(1:end) .* population(1:end));
+b(end+1) = sum(year_squared(1:end) .* population(1:end));
+b(end+1) = sum(year_cube(1:end) .* population(1:end));
 b = b.';
 
 
@@ -122,23 +122,23 @@ subplot(2,1,1)
 hold on;
 
 # Create list of x coordinates
-linx = linspace(min(z), max(z));
+linx = linspace(min(year), max(year));
 
 # Evauate the polynomial with the created list of x coordinates
 liny = evalpoly(poly, linx(:));
 
-# Plot the Temperature vs Water Depth graph
+# Plot the Year vs Population graph
 plot(linx(:), liny(:), "b-");
 
-z = [0,5,10,15,20,25,30,35,40];
-T = [35.80, 41.29, 47.40, 54.32, 61.95, 69.83, 77.99, 86.27, 93.73];
+year = [0,5,10,15,20,25,30,35,40];
+population = [35.80, 41.29, 47.40, 54.32, 61.95, 69.83, 77.99, 86.27, 93.73];
 
 # Plot the given data points
-plot(z(:), T(:), "or");
-title("Temperature vs Water Depth graph");
-ylabel("Temperature");
-xlabel("Water Depth");
-legend("T(z)", "Data point");
+plot(year(:), population(:), "or");
+title("Year vs Population graph");
+ylabel("Year");
+xlabel("Population");
+legend("population(year)", "Data point");
 hold off;
 
 subplot(2,1,2)
@@ -147,9 +147,9 @@ hold on;
 # Evauate the first_derivative with the created list of x coordinates
 liny_first_d = evalpoly(first_derivative, linx(:));
 
-# Plot the Temperature vs Water Depth graph
+# Plot the Year vs Population graph
 plot(linx(:), liny_first_d(:), "b-");
-legend("Gradient = T(z)'");
+legend("Gradient = population(year)'");
 title("Gradient");
 hold off;
 
