@@ -102,6 +102,7 @@ printf("Ly = b // below is the solved y\n");
 y
 printf("D(Lt)x = y  // below is the solved x\n");
 x
+printf("\n See the first graph containing the cubic polynomial which fits the data points")
 
 printf("\n======================================================================\n");
 complete_year = [0,5,10,15,20,25,30,35,40];
@@ -116,6 +117,7 @@ first_derivative = polyder(poly.');
 # Get second derivative of the polynomial generated
 second_derivative = polyder(first_derivative);
 
+printf("\n See the second graph containing the cubic polynomia interpolating the data points")
 printf("\n======================================================================\n");
 printf("\n4.) The following first derivative of the polynomial generated:\n");
 polyout(first_derivative, 'x');
