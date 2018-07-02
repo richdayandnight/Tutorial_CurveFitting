@@ -117,7 +117,7 @@ first_derivative = polyder(poly.');
 # Get second derivative of the polynomial generated
 second_derivative = polyder(first_derivative);
 
-printf("\n See the second graph containing the cubic polynomia interpolating the data points")
+printf("\n See the second graph containing the cubic polynomial interpolating the data points")
 printf("\n======================================================================\n");
 printf("\n4.) The following first derivative of the polynomial generated:\n");
 polyout(first_derivative, 'x');
